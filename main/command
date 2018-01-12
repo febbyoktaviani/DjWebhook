@@ -1,0 +1,3 @@
+celery -A djwebhook worker --loglevel=info
+redis-server
+./ngrok http 8080

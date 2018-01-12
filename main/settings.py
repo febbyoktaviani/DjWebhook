@@ -27,7 +27,7 @@ SECRET_KEY = 'ab((bwx!6)73r_$3zvu_4x&39b(_=inojxim(t_(+iu1z&i5q)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dd09bef3.ngrok.io', '88edd22aa.ngrok.io', 'localhost']
+ALLOWED_HOSTS = ['d5154051.ngrok.io', '88edd22aa.ngrok.io', 'localhost']
 
 
 # Application definition
@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'djcelery',
     'django.contrib.postgres',
     'slack_messages',
     'webhook',
@@ -55,7 +54,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'djwebhook.urls'
+ROOT_URLCONF = 'main.urls'
 
 TEMPLATES = [
     {
@@ -73,7 +72,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'djwebhook.wsgi.application'
+WSGI_APPLICATION = 'main.wsgi.application'
 
 
 # Database
@@ -128,31 +127,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
-# CELERY STUFF
-BROKER_URL = 'redis://localhost:6379'
-BROKER_HOST = "localhost"
-REDIS_PORT=6439
-REDIS_HOST = "localhost"
-BROKER_USER = "febby"
-BROKER_PASSWORD = "1"
-BROKER_VHOST = "0"
-REDIS_DB = 0
-REDIS_CONNECT_RETRY = True
-CELERY_SEND_EVENTS=True
-CELERY_RESULT_BACKEND='redis'
-CELERY_TASK_RESULT_EXPIRES =  10
-CELERYBEAT_SCHEDULER="djcelery.schedulers.DatabaseScheduler"
-CELERY_ACCEPT_CONTENT = ['application/json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_TIMEZONE = 'Asia/Jakarta'
-# CELERY_IMPORTS = ("tasks",)
-CELERY_BEAT_SCHEDULE = {
-    'task-number-one': {
-        'task': 'sum_two_numbers',
-        'schedule': crontab(minute='*/1')
-    },
-}
-
 
 GITHUB_WEBHOOK_SECRET = 'testwebhook'
